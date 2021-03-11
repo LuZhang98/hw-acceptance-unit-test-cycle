@@ -1,20 +1,4 @@
-<!--  This file is app/views/movies/index.html.erb -->
-<h2>All Movies</h2>
-
-<%#  Part 2: Start here... %>
-
-
-<%= form_tag movies_path, method: :get, id: 'ratings_form' do %>
-  Include:
-  <% @all_ratings.each do |rating| %>
-    <div class="form-check  form-check-inline">
-      <%= label_tag "ratings[#{rating}]", rating, class: 'form-check-label' %>
-      <%= check_box_tag "ratings[#{rating}]", "1", @selected_ratings.include?(rating), class: 'form-check-input' %>
-    </div>
-  <% end %>
-  <%= submit_tag 'Refresh', id: 'ratings_submit', class: 'btn btn-primary' %>
-<% end %>
-
+<h1>Movies with Same Director as <em><%= @movie.title %></em></h1>
 
 <table class="table table-striped col-md-12" id="movies">
   <thead>
@@ -31,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @movies.each do |movie| %>
+    <% @similar.each do |movie| %>
       <tr>
         <td>
           <%= movie.title %>
